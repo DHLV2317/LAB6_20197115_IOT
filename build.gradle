@@ -1,0 +1,9 @@
+// build.gradle (Project)
+
+plugins {
+    id 'com.android.application' version '8.6.0' apply false
+    id 'com.android.library' version '8.6.0' apply false
+
+    // 🔹 Plugin de Firebase (necesario para google-services.json)
+    id 'com.google.gms.google-services' version '4.4.2' apply false
+}
