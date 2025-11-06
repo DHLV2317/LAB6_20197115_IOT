@@ -1,9 +1,10 @@
-// build.gradle (Project)
-
+// Nivel de proyecto (no tocar versiones en el módulo)
 plugins {
-    id 'com.android.application' version '8.6.0' apply false
-    id 'com.android.library' version '8.6.0' apply false
+    id 'com.android.application' version '8.13.0' apply false
+    id 'com.android.library'     version '8.13.0' apply false
+    id 'com.google.gms.google-services' version '4.4.4' apply false
+}
 
-    // 🔹 Plugin de Firebase (necesario para google-services.json)
-    id 'com.google.gms.google-services' version '4.4.2' apply false
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
 }

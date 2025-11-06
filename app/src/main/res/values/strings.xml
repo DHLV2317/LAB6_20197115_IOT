@@ -1,3 +1,45 @@
 <resources>
+    <!-- 🏷️ Nombre de la aplicación -->
     <string name="app_name">LAB6_20197115</string>
+
+    <!-- 🧩 Texto genérico -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- 🔑 Identificadores y credenciales -->
+    <!-- Google Sign-In (usar client_type = 3 del google-services.json) -->
+    <string name="default_web_client_id">
+        731371646771-o646umauueqt0nis0mbcf2c4rkjqs5dn.apps.googleusercontent.com
+    </string>
+
+    <!-- Facebook Login -->
+    <string name="facebook_app_id">1357062752662357</string>
+    <string name="facebook_client_token">ab6026ab9fe7f7ec3a6c7fed04f5388a</string>
+    <string name="fb_login_protocol_scheme">fb1357062752662357</string>
+
+    <!-- 🧭 Títulos de vistas principales -->
+    <string name="title_tasks">Mis Tareas</string>
+    <string name="title_summary">Resumen</string>
+
+    <!-- 🔐 Login -->
+    <string name="login_title">Inicia sesión</string>
+    <string name="app_tagline">Organiza tus tareas y cumple tus metas</string>
+    <string name="login_email_hint">Correo</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_btn_sign_in">Ingresar</string>
+    <string name="login_btn_register">Registrarme</string>
+    <string name="login_or_continue">o continúa con</string>
+
+    <!-- ✅ Mensajes de estado -->
+    <string name="msg_login_success">Inicio de sesión exitoso</string>
+    <string name="msg_login_fail">Error al iniciar sesión</string>
+    <string name="msg_empty_fields">Completa email y contraseña</string>
+    <string name="msg_facebook_cancel">Inicio con Facebook cancelado</string>
+    <string name="msg_facebook_error">Error en autenticación con Facebook</string>
+    <string name="msg_google_cancel">Inicio con Google cancelado</string>
+    <string name="msg_google_error">Error en autenticación con Google</string>
+
+    <!-- ⚙️ Navegación inferior -->
+    <string name="nav_tasks">Tareas</string>
+    <string name="nav_summary">Resumen</string>
+    <string name="nav_logout">Cerrar sesión</string>
 </resources>

@@ -1,60 +1,42 @@
 plugins {
     id 'com.android.application'
-    id 'com.google.gms.google-services'  // 🔹 Importante para vincular Firebase
+    id 'com.google.gms.google-services'
 }
 
 android {
     namespace 'com.example.lab6_20197115'
-    compileSdk 36
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.lab6_20197115"
-        minSdk 31
-        targetSdk 36
+        minSdk 26
+        targetSdk 34
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-
-    buildFeatures {
-        viewBinding true  // 🔹 Te permitirá usar binding sin findViewById()
-    }
+    buildFeatures { viewBinding true }
 }
 
 dependencies {
-    // Librerías base del proyecto (Material Design, AppCompat, etc.)
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'com.google.android.material:material:1.12.0'
-    implementation 'androidx.activity:activity:1.9.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    // Firebase BOM
+    implementation platform('com.google.firebase:firebase-bom:33.4.0')
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
-
-    // 🔹 Firebase BOM (maneja versiones automáticamente)
-    implementation platform('com.google.firebase:firebase-bom:33.5.1')
-
-    // 🔹 Firebase módulos que usaremos en el laboratorio
+    // Firebase core
     implementation 'com.google.firebase:firebase-auth'
-    implementation 'com.google.firebase:firebase-firestore'
+    implementation 'com.google.firebase:firebase-database'   // (Resumen usa Realtime Database)
+    implementation 'com.google.firebase:firebase-analytics'
 
-    // (Opcional) Para login con Google más adelante
-    // implementation 'com.google.android.gms:play-services-auth:21.2.0'
+    // Google Sign-In / One Tap
+    implementation 'com.google.android.gms:play-services-auth:21.2.0'
+    implementation 'com.google.android.gms:play-services-identity:18.0.1'
 
-    // (Opcional) Si usas Realtime Database
-    // implementation 'com.google.firebase:firebase-database'
+    // Facebook Login SDK
+    implementation 'com.facebook.android:facebook-login:latest.release'
+
+    // UI
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.fragment:fragment-ktx:1.8.3'
 }
