@@ -2,6 +2,7 @@ package com.example.lab6_20197115.ui.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -108,6 +109,11 @@ public class LoginActivity extends AppCompatActivity {
         ((MaterialButton) findViewById(R.id.btnLogin)).setOnClickListener(v -> doEmailLogin());
         ((MaterialButton) findViewById(R.id.btnRegister)).setOnClickListener(
                 v -> startActivity(new Intent(this, RegisterActivity.class)));
+
+        // 👉 Olvidé contraseña
+        TextView tvForgot = findViewById(R.id.tvForgotPassword);
+        tvForgot.setOnClickListener(v ->
+                startActivity(new Intent(this, ResetPasswordActivity.class)));
 
         // ====== GOOGLE ======
         setupGoogleOneTap();

@@ -6,31 +6,53 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lab6_20197115.R;
+import com.example.lab6_20197115.services.AuthService;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private FirebaseAuth auth;
-    private TextInputEditText inEmail, inPass;
+    private AuthService authService;
+    private TextInputEditText inName, inDni, inEmail, inPass;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        auth = FirebaseAuth.getInstance();
+        authService = new AuthService();
+
+        inName  = findViewById(R.id.inputName);
+        inDni   = findViewById(R.id.inputDni);
         inEmail = findViewById(R.id.inputEmail);
         inPass  = findViewById(R.id.inputPassword);
 
         ((MaterialButton) findViewById(R.id.btnRegister)).setOnClickListener(v -> {
-            String email = text(inEmail), pass = text(inPass);
-            if (email.isEmpty() || pass.isEmpty()) { toast("Completa todo"); return; }
-            auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(t -> {
-                if (t.isSuccessful()) { toast("Cuenta creada. Inicia sesión"); finish(); }
-                else toast("Error: " + t.getException().getMessage());
-            });
+            String nombre = text(inName);
+            String dni    = text(inDni);
+            String email  = text(inEmail);
+            String pass   = text(inPass);
+
+            if (nombre.isEmpty()) { toast("Nombre requerido"); return; }
+            if (dni.isEmpty() || dni.length() != 8) {
+                toast("DNI debe tener 8 dígitos"); return;
+            }
+            if (email.isEmpty()) { toast("Correo requerido"); return; }
+            if (pass.isEmpty())  { toast("Contraseña requerida"); return; }
+
+            authService.registerUser(
+                    nombre, dni, email, pass,
+                    new AuthService.SimpleCallback() {
+                        @Override public void onSuccess() {
+                            toast("Usuario creado correctamente");
+                            finish(); // volver a Login
+                        }
+
+                        @Override public void onError(String message) {
+                            toast("Error registro: " + message);
+                        }
+                    }
+            );
         });
     }
 
